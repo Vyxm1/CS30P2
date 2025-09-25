@@ -47,20 +47,20 @@ public class MetricConversion {
 		frmMetricConversion.setTitle("Metric Conversion");
 		frmMetricConversion.setBounds(100, 100, 400, 260);
 		frmMetricConversion.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+
 		JPanel panel = new JPanel();
 		frmMetricConversion.getContentPane().add(panel, BorderLayout.CENTER);
 		panel.setLayout(null);
-		
+
 		JLabel ConversionLbl = new JLabel("Select a Conversion Type:");
 		ConversionLbl.setBounds(50, 44, 150, 14);
 		panel.add(ConversionLbl);
-		
+
 		JLabel formulaDisp = new JLabel("Conversion will show here");
 		formulaDisp.setFont(new Font("Tahoma", Font.BOLD, 14));
 		formulaDisp.setBounds(50, 135, 201, 57);
 		panel.add(formulaDisp);
-		
+
 		JComboBox ConversionBox = new JComboBox();
 		ConversionBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
@@ -87,7 +87,7 @@ public class MetricConversion {
 				}
 			}
 		});
-		
+
 		ConversionBox.setModel(new DefaultComboBoxModel(new String[] {"(Select a type)", "Inches to Centimeters", "Feet to Meters", "Gallons to Liters", "Pounds to Kilograms"}));
 		ConversionBox.setBounds(50, 63, 201, 22);
 		panel.add(ConversionBox);

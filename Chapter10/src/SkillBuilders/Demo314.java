@@ -58,15 +58,15 @@ public class Demo314 {
 	{
 		ImageIcon hs = new ImageIcon("../Chapter10/src/SkillBuilders/highschool.jpg");
 		ImageIcon chhs = new ImageIcon("../Chapter10/src/SkillBuilders/chhslogo.png");
-		
+
 		frame = new JFrame();
 		frame.setBounds(100, 100, 620, 579);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+
 		JPanel panel = new JPanel();
 		frame.getContentPane().add(panel, BorderLayout.CENTER);
 		panel.setLayout(null);
-		
+
 		ln = new JTextField();
 		ln.addMouseMotionListener(new MouseMotionAdapter() {
 			@Override
@@ -105,7 +105,7 @@ public class Demo314 {
 		ln.setBounds(244, 28, 142, 70);
 		panel.add(ln);
 		ln.setColumns(10);
-		
+
 		fn = new JTextField();
 		fn.addKeyListener(new KeyAdapter() {
 			@Override
@@ -124,31 +124,31 @@ public class Demo314 {
 		fn.setColumns(10);
 		fn.setBounds(58, 28, 142, 70);
 		panel.add(fn);
-		
+
 		JComboBox gradeBox = new JComboBox();
 		gradeBox.setForeground(new Color(192, 192, 192));
 		gradeBox.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		gradeBox.setModel(new DefaultComboBoxModel(new String[] {"Select Grade", "10", "11", "12"}));
 		gradeBox.setBounds(58, 119, 135, 44);
 		panel.add(gradeBox);
-		
+
 		JComboBox schoolBox = new JComboBox();
 		schoolBox.setForeground(new Color(192, 192, 192));
 		schoolBox.setModel(new DefaultComboBoxModel(new String[] {"Select School", "Crescent Heights", "Lester B. Pearson", "James Fowler", "Western Canada"}));
 		schoolBox.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		schoolBox.setBounds(244, 119, 142, 44);
 		panel.add(schoolBox);
-		
+
 		JTextArea disp = new JTextArea();
 		disp.setBackground(Color.LIGHT_GRAY);
 		disp.setBounds(58, 176, 328, 94);
 		panel.add(disp);
-		
-		
+
+
 		JLabel imgA = new JLabel("");
 		imgA.setBounds(58, 307, 328, 233);
 		panel.add(imgA);
-		
+
 		JButton submitbtn = new JButton("SUBMIT");
 		submitbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
@@ -157,7 +157,7 @@ public class Demo314 {
 				String lastName = ln.getText();
 				String grade;
 				String school;
-				
+
 				if (gradeBox.getSelectedItem().equals("12"))
 				{
 					grade = "12";
@@ -170,7 +170,7 @@ public class Demo314 {
 				{
 					grade = "10";
 				}
-				
+
 				if (schoolBox.getSelectedItem().equals("Crescent Heights"))
 				{
 					school = "Crescent Heights";
@@ -189,8 +189,8 @@ public class Demo314 {
 				{
 					school = "Western Canada";
 				}
-				
-				
+
+
 				disp.setText(firstName + " " + lastName + " is in grade " + grade
 						+ "\nThey attend " + schoolBox.getSelectedItem());
 			}
@@ -198,8 +198,8 @@ public class Demo314 {
 		submitbtn.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		submitbtn.setBounds(461, 28, 113, 313);
 		panel.add(submitbtn);
-		
-		
+
+
 
 	}
 }
