@@ -3,6 +3,22 @@ package Mastery;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+import java.awt.BorderLayout;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
+
+/*
+
+Program: BreakaPlate.java          Last Date of this Revision: Oct. 1, 2025
+
+Purpose: Modify the BreakAPlate application to display a picture of the prize won rather than text naming the prize.
+
+Author: Vyom Patel 
+School: CHHS
+Course: Computer Programming 30
+
+*/
 
 public class BreakaPlate
 {
@@ -46,6 +62,9 @@ public class BreakaPlate
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		JPanel panel = new JPanel();
+		frame.getContentPane().add(panel, BorderLayout.CENTER);
+		panel.setLayout(null);
 	}
-
 }
