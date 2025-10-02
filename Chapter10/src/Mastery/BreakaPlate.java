@@ -5,13 +5,10 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import SkillBuilders.Roll;
-
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import java.awt.Color;
-import java.awt.GridLayout;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.Random;
@@ -32,7 +29,7 @@ Course: Computer Programming 30
 public class BreakaPlate
 {
 
-	private JFrame frame;
+	private JFrame frmBreak;
 
 	/**
 	 * Launch the application.
@@ -46,8 +43,9 @@ public class BreakaPlate
 				try
 				{
 					BreakaPlate window = new BreakaPlate();
-					window.frame.setVisible(true);
-				} catch (Exception e)
+					window.frmBreak.setVisible(true);
+				}
+				catch (Exception e)
 				{
 					e.printStackTrace();
 				}
@@ -56,7 +54,8 @@ public class BreakaPlate
 	}
 
 	/**
-	 * Create the application.
+	 * Constructor for BreakaPlate.
+	 * Calls initialize() to set up the GUI.
 	 */
 	public BreakaPlate()
 	{
@@ -64,60 +63,71 @@ public class BreakaPlate
 	}
 
 	/**
-	 * Initialize the contents of the frame.
+	 * Set up the contents of the frame:
+	 * - Create the panel
+	 * - Add images and labels
+	 * - Add the Play button with game logic
 	 */
 	private void initialize()
 	{
-		frame = new JFrame();
-		frame.setBounds(100, 100, 469, 364);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		// Create and configure the JFrame
+		frmBreak = new JFrame();
+		frmBreak.setTitle("BreakAPlate");
+		frmBreak.setBounds(100, 100, 469, 364);
+		frmBreak.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+		// Create the main panel with white background
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(255, 255, 255));
-		frame.getContentPane().add(panel, BorderLayout.CENTER);
-		panel.setLayout(null);
+		frmBreak.getContentPane().add(panel, BorderLayout.CENTER);
+		panel.setLayout(null); // using absolute positioning
 
-		/* Create a label that shows the start of the game */
+		/* Label to display the plates image */
 		JLabel plates = new JLabel("");
 		plates.setBounds(81, 33, 275, 76);
+		// Start with all plates unbroken
 		plates.setIcon(new ImageIcon(BreakaPlate.class.getResource("/Mastery/BreakaPlateImages/plates.gif")));
 		panel.add(plates);
 
+		/* Label to display the prize image */
 		JLabel prizeWon = new JLabel("");
+		// Start with a placeholder prize image
 		prizeWon.setIcon(new ImageIcon(BreakaPlate.class.getResource("/Mastery/BreakaPlateImages/placeholder.gif")));
 		prizeWon.setBounds(161, 189, 111, 111);
 		panel.add(prizeWon);
-		
+
 		/* Create a Play button */
 		JButton play = new JButton("Play");
 		play.addActionListener(new ActionListener() {
 			/**
-			 * Handle the button click
-			 * pre: none
-			 * post: The appropriate image and message are displayed.
+			 * Handles the "Play" button click:
+			 * - Simulates 3 tosses (each has a 50% chance of success)
+			 * - If all 3 succeed → win plush tiger
+			 * - Otherwise → win sticker
+			 * - Updates images and button text accordingly
 			 */
 			public void actionPerformed(ActionEvent e)
 			{
 
 				String prize;
-				final String FIRST_PRIZE = "Win";
-				final String CONSOLATION_PRIZE = "Lose";
+				final String FIRST_PRIZE = "Win"; // Tiger plush
+				final String CONSOLATION_PRIZE = "Lose"; // Sticker
 
 				int toss;
 				int successes = 0;
 				Random r = new Random();
 
-				/* play game */
-				for (int i = 0; i < 3; i++)
-				{ //player gets three tries
-					toss = r.nextInt(2);
+				// Simulate 3 tosses
+				for (int i = 0; i < 3; i++) 
+				{
+					toss = r.nextInt(2); // random 0 or 1
 					if (toss == 1)
 					{
-						successes += 1; //1 is a successful toss
+						successes += 1; // Count a successful toss
 					}
 				}
 
-				/* award prize */
+				// Determine prize based on results
 				if (successes == 3)
 				{
 					prize = FIRST_PRIZE;
@@ -127,23 +137,28 @@ public class BreakaPlate
 					prize = (CONSOLATION_PRIZE);
 				}
 
-				if (play.getText() == "Play")
+				// If currently showing "Play"
+				if (play.getText().equals("Play"))
 				{
+					// Update plates & prize images based on result
 					if (prize.equals(FIRST_PRIZE))
 					{
 						plates.setIcon(new ImageIcon(BreakaPlate.class.getResource("/Mastery/BreakaPlateImages/plates_all_broken.gif")));
-						prizeWon.setIcon(new ImageIcon(BreakaPlate.class.getResource("sticker.gif")));
+						prizeWon.setIcon(new ImageIcon(BreakaPlate.class.getResource("/Mastery/BreakaPlateImages/tiger_plush.gif")));
 					}
 					else if (prize.equals(CONSOLATION_PRIZE))
 					{
 						plates.setIcon(new ImageIcon(BreakaPlate.class.getResource("/Mastery/BreakaPlateImages/plates_two_broken.gif")));
-						prizeWon.setIcon(new ImageIcon(BreakaPlate.class.getResource("tiger_plush.gif")));
+						prizeWon.setIcon(new ImageIcon(BreakaPlate.class.getResource("/Mastery/BreakaPlateImages/sticker.gif")));
 					}
 
+					// Change button text for replay
 					play.setText("Play Again");
 				}
-				else if (play.getText() == "Play Again")
+				// If player clicks "Play Again"
+				else if (play.getText().equals("Play Again"))
 				{
+					// Reset images to starting state
 					plates.setIcon(new ImageIcon(BreakaPlate.class.getResource("/Mastery/BreakaPlateImages/plates.gif")));
 					prizeWon.setIcon(new ImageIcon(BreakaPlate.class.getResource("/Mastery/BreakaPlateImages/placeholder.gif")));
 					play.setText("Play");
@@ -151,10 +166,10 @@ public class BreakaPlate
 				}
 			}
 		});
-		play.setBounds(171, 155, 89, 23);
+
+		// Position and add the button to the panel
+		play.setBounds(161, 140, 111, 38);
 		panel.add(play);
-		
-		
 
 	}
 }
