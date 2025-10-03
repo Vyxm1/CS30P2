@@ -69,7 +69,7 @@ public class TicTacToe
 				
 			}
 		});
-		btn1.setBounds(32, 11, 125, 60);
+		btn1.setBounds(30, 11, 125, 60);
 		panel.add(btn1);
 		
 		JButton btn2 = new JButton("");
@@ -81,7 +81,7 @@ public class TicTacToe
 		panel.add(btn3);
 		
 		JButton btn4 = new JButton("");
-		btn4.setBounds(32, 82, 125, 60);
+		btn4.setBounds(30, 82, 125, 60);
 		panel.add(btn4);
 		
 		JButton btn5 = new JButton("");
@@ -93,7 +93,7 @@ public class TicTacToe
 		panel.add(btn6);
 		
 		JButton btn7 = new JButton("");
-		btn7.setBounds(32, 153, 125, 60);
+		btn7.setBounds(30, 153, 125, 60);
 		panel.add(btn7);
 		
 		JButton btn8 = new JButton("");
