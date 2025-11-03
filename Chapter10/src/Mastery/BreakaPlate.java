@@ -1,3 +1,16 @@
+/*
+
+Program: BreakaPlate.java          Last Date of this Revision: Oct. 1, 2025
+
+Purpose: Modify the BreakAPlate application to display a picture of the prize won rather than text naming the prize.
+
+Author: Vyom Patel 
+School: CHHS
+Course: Computer Programming 30
+
+ */
+
+
 package Mastery;
 
 import java.awt.EventQueue;
@@ -14,17 +27,7 @@ import java.awt.event.ActionListener;
 import java.util.Random;
 import java.awt.event.ActionEvent;
 
-/*
 
-Program: BreakaPlate.java          Last Date of this Revision: Oct. 1, 2025
-
-Purpose: Modify the BreakAPlate application to display a picture of the prize won rather than text naming the prize.
-
-Author: Vyom Patel 
-School: CHHS
-Course: Computer Programming 30
-
- */
 
 public class BreakaPlate
 {
