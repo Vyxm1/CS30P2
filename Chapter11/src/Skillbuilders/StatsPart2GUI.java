@@ -1,0 +1,201 @@
+package Skillbuilders;
+
+import java.awt.EventQueue;
+
+import java.io.*;
+import java.text.NumberFormat;
+import java.awt.BorderLayout;
+import javax.swing.*;
+import java.awt.Color;
+import javax.swing.border.LineBorder;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+public class StatsPart2GUI
+{
+
+	private JFrame frame;
+	private static final String FILE_PATH = "..\\Chapter11\\src\\Skillbuilders\\test1.dat";
+	private File dataFile;
+
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args)
+	{
+		EventQueue.invokeLater(new Runnable()
+		{
+			public void run()
+			{
+				try
+				{
+					StatsPart2GUI window = new StatsPart2GUI();
+					window.frame.setVisible(true);
+				} catch (Exception e)
+				{
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public StatsPart2GUI()
+	{
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize()
+	{
+		frame = new JFrame();
+		frame.setBounds(100, 100, 568, 427);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+		JPanel panel = new JPanel();
+		frame.getContentPane().add(panel, BorderLayout.CENTER);
+		panel.setLayout(null);
+
+		JTextArea resultArea = new JTextArea();
+		resultArea.setFont(new Font("Arial", Font.PLAIN, 13));
+		resultArea.setRows(15);
+		resultArea.setColumns(40);
+		resultArea.setEditable(false);
+		resultArea.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
+		resultArea.setBackground(new Color(240, 240, 240));
+		resultArea.setBounds(285, 54, 257, 272);
+		panel.add(resultArea);
+
+		JLabel titlelbl = new JLabel("Student Test Scores");
+		titlelbl.setHorizontalAlignment(SwingConstants.CENTER);
+		titlelbl.setBounds(175, 20, 186, 23);
+		panel.add(titlelbl);
+
+		JTextArea inputArea = new JTextArea();
+		inputArea.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e)
+			{
+				if (inputArea.getText().equals("Enter Grades Here:"))
+				{
+					inputArea.setText(null);
+				}
+			}
+		});
+		inputArea.setFont(new Font("Arial", Font.PLAIN, 13));
+		inputArea.setText("Enter Grades Here:");
+		inputArea.setBorder(new LineBorder(new Color(0, 0, 0)));
+		inputArea.setColumns(40);
+		inputArea.setRows(15);
+		inputArea.setBackground(new Color(240, 240, 240));
+		inputArea.setBounds(23, 84, 252, 242);
+		panel.add(inputArea);
+		
+		JTextArea txtrEnterFileName = new JTextArea();
+		txtrEnterFileName.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e)
+			{
+				if (inputArea.getText().equals("Enter File Name to be created"))
+				{
+					inputArea.setText(null);
+				}
+			}
+		});
+		txtrEnterFileName.setFont(new Font("Arial", Font.PLAIN, 13));
+		txtrEnterFileName.setText("Enter File Name to be created");
+		txtrEnterFileName.setBorder(new LineBorder(new Color(0, 0, 0)));
+		txtrEnterFileName.setBackground(new Color(240, 240, 240));
+		txtrEnterFileName.setBounds(23, 54, 252, 22);
+		panel.add(txtrEnterFileName);
+		
+		JButton analyzebtn = new JButton("Analyze Scores");
+		analyzebtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e)
+			{
+				resultArea.setText(null);
+
+				dataFile = new File(FILE_PATH);
+
+				FileReader in;
+				BufferedReader readFile;
+				NumberFormat percentFormatter = NumberFormat.getPercentInstance();
+				StringBuilder output = new StringBuilder();
+
+				String stuName, score;
+				double scoreValue;
+				double lowScore = 100;
+				double hiScore = 0;
+				double avgScore;
+				double totalScore = 0;
+				int numScores = 0;
+
+				try
+				{
+					in = new FileReader(dataFile);
+					readFile = new BufferedReader(in);
+					output.append("STUDENT SCORES: \n"
+							+ "----------------------------\n");
+
+					while ((stuName = readFile.readLine()) != null)
+					{
+						score = readFile.readLine();
+						numScores++;
+
+						scoreValue = Double.parseDouble(score);
+						output.append(stuName + " " + percentFormatter.format(scoreValue / 100) + "\n");
+						totalScore += scoreValue;
+
+						if (scoreValue < lowScore)
+						{
+							lowScore = scoreValue;
+						}
+
+						if (scoreValue > hiScore)
+						{
+							hiScore = scoreValue;
+						}
+					}
+
+					avgScore = totalScore / numScores;
+					output.append("\nStatistics: \n"
+							+ "----------------------------\n"
+							+ "Lowest score: " + percentFormatter.format(lowScore / 100)
+							+ "\nHighest Score: " + percentFormatter.format(hiScore / 100)
+							+ "\nAverage Score: " + percentFormatter.format(avgScore / 100)
+							+ "\nTotal Students: " + numScores);
+
+					resultArea.setText(output.toString());
+
+					readFile.close();
+					in.close();
+				}
+				catch (FileNotFoundException err)
+				{
+					System.out.println("File could not be found!");
+					System.err.println("FileNotFoundException: " + err.getMessage());
+				}
+				catch (IOException err)
+				{
+					System.out.println("Problem reading file!");
+					System.err.println("IOexception: " + err.getMessage());
+				}
+
+			}
+		});
+		analyzebtn.setBounds(214, 337, 128, 40);
+		panel.add(analyzebtn);
+		
+		
+		
+		
+	}
+}
