@@ -13,6 +13,10 @@ import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusAdapter;
 
 public class StatsPart2GUI
 {
@@ -64,6 +68,99 @@ public class StatsPart2GUI
 		frame.getContentPane().add(panel, BorderLayout.CENTER);
 		panel.setLayout(null);
 
+		JLabel titlelbl = new JLabel("Student Test Scores");
+		titlelbl.setHorizontalAlignment(SwingConstants.CENTER);
+		titlelbl.setBounds(175, 20, 186, 23);
+		panel.add(titlelbl);
+		
+		JTextArea inputFileName = new JTextArea();
+		inputFileName.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e)
+			{
+				if (inputFileName.getText().equals("Enter File Name to be created:"))
+				{
+					inputFileName.setText("");
+					inputFileName.setForeground(Color.BLACK); // Restore default text color
+				}
+			}
+			public void focusLost(FocusEvent e)
+			{
+				if (inputFileName.getText().isEmpty())
+				{
+					inputFileName.setText("Enter File Name to be created:");
+					inputFileName.setForeground(Color.GRAY); // Set placeholder color
+				}
+			}
+		});
+		inputFileName.setFont(new Font("Arial", Font.PLAIN, 13));
+		inputFileName.setText("Enter File Name to be created:");
+		inputFileName.setBorder(new LineBorder(new Color(0, 0, 0)));
+		inputFileName.setBackground(new Color(240, 240, 240));
+		inputFileName.setBounds(23, 54, 252, 22);
+		inputFileName.setForeground(Color.GRAY);
+		panel.add(inputFileName);
+
+		
+		JTextArea inputNumGrades = new JTextArea();
+		inputNumGrades.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e)
+			{
+				if (inputNumGrades.getText().equals("Enter number of student grades:"))
+				{
+					inputNumGrades.setText("");
+					inputNumGrades.setForeground(Color.BLACK); // Restore default text color
+				}
+			}
+			public void focusLost(FocusEvent e)
+			{
+				if (inputNumGrades.getText().isEmpty())
+				{
+					inputNumGrades.setText("Enter number of student grades:");
+					inputNumGrades.setForeground(Color.GRAY); // Set placeholder color
+				}
+			}
+		});
+		inputNumGrades.setText("Enter number of student grades:");
+		inputNumGrades.setFont(new Font("Arial", Font.PLAIN, 13));
+		inputNumGrades.setBorder(new LineBorder(new Color(0, 0, 0)));
+		inputNumGrades.setBackground(UIManager.getColor("Button.background"));
+		inputNumGrades.setBounds(23, 87, 252, 22);
+		inputNumGrades.setForeground(Color.GRAY);
+		panel.add(inputNumGrades);
+		
+		
+		JTextArea inputGrades = new JTextArea();
+		inputGrades.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e)
+			{
+				if (inputGrades.getText().equals("Enter Grades Here:"))
+				{
+					inputGrades.setText("");
+					inputGrades.setForeground(Color.BLACK); // Restore default text color
+				}
+			}
+			public void focusLost(FocusEvent e)
+			{
+				if (inputGrades.getText().isEmpty())
+				{
+					inputGrades.setText("Enter Grades Here:");
+					inputGrades.setForeground(Color.GRAY); // Set placeholder color
+				}
+			}
+		});
+		inputGrades.setFont(new Font("Arial", Font.PLAIN, 13));
+		inputGrades.setText("Enter Grades Here:");
+		inputGrades.setBorder(new LineBorder(new Color(0, 0, 0)));
+		inputGrades.setColumns(40);
+		inputGrades.setRows(15);
+		inputGrades.setBackground(new Color(240, 240, 240));
+		inputGrades.setBounds(23, 118, 252, 208);
+		inputGrades.setForeground(Color.GRAY);
+		panel.add(inputGrades);
+
 		JTextArea resultArea = new JTextArea();
 		resultArea.setFont(new Font("Arial", Font.PLAIN, 13));
 		resultArea.setRows(15);
@@ -74,49 +171,6 @@ public class StatsPart2GUI
 		resultArea.setBounds(285, 54, 257, 272);
 		panel.add(resultArea);
 
-		JLabel titlelbl = new JLabel("Student Test Scores");
-		titlelbl.setHorizontalAlignment(SwingConstants.CENTER);
-		titlelbl.setBounds(175, 20, 186, 23);
-		panel.add(titlelbl);
-
-		JTextArea inputArea = new JTextArea();
-		inputArea.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e)
-			{
-				if (inputArea.getText().equals("Enter Grades Here:"))
-				{
-					inputArea.setText(null);
-				}
-			}
-		});
-		inputArea.setFont(new Font("Arial", Font.PLAIN, 13));
-		inputArea.setText("Enter Grades Here:");
-		inputArea.setBorder(new LineBorder(new Color(0, 0, 0)));
-		inputArea.setColumns(40);
-		inputArea.setRows(15);
-		inputArea.setBackground(new Color(240, 240, 240));
-		inputArea.setBounds(23, 84, 252, 242);
-		panel.add(inputArea);
-		
-		JTextArea txtrEnterFileName = new JTextArea();
-		txtrEnterFileName.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e)
-			{
-				if (inputArea.getText().equals("Enter File Name to be created"))
-				{
-					inputArea.setText(null);
-				}
-			}
-		});
-		txtrEnterFileName.setFont(new Font("Arial", Font.PLAIN, 13));
-		txtrEnterFileName.setText("Enter File Name to be created");
-		txtrEnterFileName.setBorder(new LineBorder(new Color(0, 0, 0)));
-		txtrEnterFileName.setBackground(new Color(240, 240, 240));
-		txtrEnterFileName.setBounds(23, 54, 252, 22);
-		panel.add(txtrEnterFileName);
-		
 		JButton analyzebtn = new JButton("Analyze Scores");
 		analyzebtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
@@ -193,9 +247,6 @@ public class StatsPart2GUI
 		});
 		analyzebtn.setBounds(214, 337, 128, 40);
 		panel.add(analyzebtn);
-		
-		
-		
-		
+
 	}
 }

@@ -105,13 +105,13 @@ public class StatsPart1GUI
 
 					while ((stuName = readFile.readLine()) != null)
 					{
-						score = readFile.readLine();
 						numScores++;
-
+						score = readFile.readLine();
 						scoreValue = Double.parseDouble(score);
-						output.append(stuName + " " + percentFormatter.format(scoreValue / 100) + "\n");
+						
 						totalScore += scoreValue;
-
+						output.append(stuName + " " + percentFormatter.format(scoreValue / 100) + "\n");
+						
 						if (scoreValue < lowScore)
 						{
 							lowScore = scoreValue;
