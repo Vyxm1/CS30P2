@@ -3,7 +3,6 @@ package Skillbuilders;
 import java.awt.EventQueue;
 
 import java.io.*;
-import java.text.NumberFormat;
 import java.awt.BorderLayout;
 import javax.swing.*;
 import java.awt.Color;
@@ -11,10 +10,6 @@ import javax.swing.border.LineBorder;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusAdapter;
 
@@ -22,8 +17,8 @@ public class StatsPart2GUI
 {
 
 	private JFrame frame;
-	private static final String FILE_PATH = "..\\Chapter11\\src\\Skillbuilders\\test1.dat";
 	private File dataFile;
+	StudentData inputDialog = new StudentData();
 
 
 	/**
@@ -65,10 +60,13 @@ public class StatsPart2GUI
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		JPanel panel = new JPanel();
+		panel.setBackground(new Color(128, 128, 128));
 		frame.getContentPane().add(panel, BorderLayout.CENTER);
 		panel.setLayout(null);
 
 		JLabel titlelbl = new JLabel("Student Test Scores");
+		titlelbl.setFont(new Font("Tahoma", Font.BOLD, 11));
+		titlelbl.setForeground(new Color(255, 255, 255));
 		titlelbl.setHorizontalAlignment(SwingConstants.CENTER);
 		titlelbl.setBounds(175, 20, 186, 23);
 		panel.add(titlelbl);
@@ -129,37 +127,6 @@ public class StatsPart2GUI
 		inputNumGrades.setBounds(23, 87, 252, 22);
 		inputNumGrades.setForeground(Color.GRAY);
 		panel.add(inputNumGrades);
-		
-		
-		JTextArea inputGrades = new JTextArea();
-		inputGrades.addFocusListener(new FocusAdapter() {
-			@Override
-			public void focusGained(FocusEvent e)
-			{
-				if (inputGrades.getText().equals("Enter Grades Here:"))
-				{
-					inputGrades.setText("");
-					inputGrades.setForeground(Color.BLACK); // Restore default text color
-				}
-			}
-			public void focusLost(FocusEvent e)
-			{
-				if (inputGrades.getText().isEmpty())
-				{
-					inputGrades.setText("Enter Grades Here:");
-					inputGrades.setForeground(Color.GRAY); // Set placeholder color
-				}
-			}
-		});
-		inputGrades.setFont(new Font("Arial", Font.PLAIN, 13));
-		inputGrades.setText("Enter Grades Here:");
-		inputGrades.setBorder(new LineBorder(new Color(0, 0, 0)));
-		inputGrades.setColumns(40);
-		inputGrades.setRows(15);
-		inputGrades.setBackground(new Color(240, 240, 240));
-		inputGrades.setBounds(23, 118, 252, 208);
-		inputGrades.setForeground(Color.GRAY);
-		panel.add(inputGrades);
 
 		JTextArea resultArea = new JTextArea();
 		resultArea.setFont(new Font("Arial", Font.PLAIN, 13));
@@ -171,82 +138,95 @@ public class StatsPart2GUI
 		resultArea.setBounds(285, 54, 257, 272);
 		panel.add(resultArea);
 
-		JButton analyzebtn = new JButton("Analyze Scores");
-		analyzebtn.addActionListener(new ActionListener() {
+		JButton createBtn = new JButton("Create Data File");
+		createBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
 			{
-				resultArea.setText(null);
-
-				dataFile = new File(FILE_PATH);
-
-				FileReader in;
-				BufferedReader readFile;
-				NumberFormat percentFormatter = NumberFormat.getPercentInstance();
-				StringBuilder output = new StringBuilder();
-
-				String stuName, score;
-				double scoreValue;
-				double lowScore = 100;
-				double hiScore = 0;
-				double avgScore;
-				double totalScore = 0;
-				int numScores = 0;
-
+				String fileName = inputFileName.getText().trim();
+				String numGradeText = inputNumGrades.getText().trim();
+				
+				if (fileName.isEmpty() || fileName.equals("EnterFileNametobecreated:") || numGradeText.isEmpty())
+				{
+					JOptionPane.showMessageDialog(null, "Please Enter both file name and number of students. ",
+							"Input Error", JOptionPane.WARNING_MESSAGE);
+				}
+				
 				try
 				{
-					in = new FileReader(dataFile);
-					readFile = new BufferedReader(in);
-					output.append("STUDENT SCORES: \n"
-							+ "----------------------------\n");
-
-					while ((stuName = readFile.readLine()) != null)
+					int numStu = Integer.parseInt(numGradeText);
+					
+					StringBuilder studentData = new StringBuilder();
+					
+					dataFile = new File(fileName);
+					FileWriter out = new FileWriter(dataFile);
+					BufferedWriter writeFile = new BufferedWriter(out);
+					
+					for (int i = 0; i < numStu; i++)
 					{
-						score = readFile.readLine();
-						numScores++;
-
-						scoreValue = Double.parseDouble(score);
-						output.append(stuName + " " + percentFormatter.format(scoreValue / 100) + "\n");
-						totalScore += scoreValue;
-
-						if (scoreValue < lowScore)
+						int result = JOptionPane.showConfirmDialog(null, inputDialog,
+								"Enter Data for Student " + (i + 1), JOptionPane.OK_CANCEL_OPTION);
+						if (result != JOptionPane.OK_OPTION)
 						{
-							lowScore = scoreValue;
+							break;
 						}
-
-						if (scoreValue > hiScore)
+						
+						String stuName = inputDialog.getStudentName().getText().trim();
+						String stuGrade = inputDialog.getStudentGrade().getText().trim();
+						
+						if (stuName.isEmpty() || stuGrade.isEmpty())
 						{
-							hiScore = scoreValue;
+							JOptionPane.showMessageDialog(null, "Please Enter both name and Score",
+									"Input Error", JOptionPane.WARNING_MESSAGE);
+							
+							i--;
+							continue;
 						}
+						try
+						{
+							Double.parseDouble(stuGrade);
+						}
+						catch (NumberFormatException err)
+						{
+							JOptionPane.showMessageDialog(null, "Please Enter valid number for the score " + (i + 1),
+									"Input Error", JOptionPane.WARNING_MESSAGE);
+							
+							i--;
+							continue;
+						}
+						studentData.append(stuName).append(": ").append(stuGrade).append("\n");
+						
+						
+						writeFile.write(stuName);
+						writeFile.newLine();
+						writeFile.write(stuGrade);
+						writeFile.newLine();
+						
 					}
-
-					avgScore = totalScore / numScores;
-					output.append("\nStatistics: \n"
-							+ "----------------------------\n"
-							+ "Lowest score: " + percentFormatter.format(lowScore / 100)
-							+ "\nHighest Score: " + percentFormatter.format(hiScore / 100)
-							+ "\nAverage Score: " + percentFormatter.format(avgScore / 100)
-							+ "\nTotal Students: " + numScores);
-
-					resultArea.setText(output.toString());
-
-					readFile.close();
-					in.close();
-				}
-				catch (FileNotFoundException err)
-				{
-					System.out.println("File could not be found!");
-					System.err.println("FileNotFoundException: " + err.getMessage());
+					
+					writeFile.close();
+					out.close();
+					
+					resultArea.setText("Data written to file: " + fileName + "\n");
+					resultArea.append("STUDENTS ENTERED: \n\n");
+					resultArea.append(studentData.toString());
+					resultArea.append("\nFile Created successfully");
 				}
 				catch (IOException err)
 				{
-					System.out.println("Problem reading file!");
-					System.err.println("IOexception: " + err.getMessage());
+					JOptionPane.showMessageDialog(null, "File could not be created\n" + err.getMessage(),
+							"File Error", JOptionPane.ERROR_MESSAGE);
 				}
+				catch (NumberFormatException err)
+				{
+					JOptionPane.showMessageDialog(null, "Please Enter valid number for the students ",
+							"Input Error", JOptionPane.ERROR_MESSAGE);
+				}
+				
+				
 
 			}
 		});
-		analyzebtn.setBounds(214, 337, 128, 40);
-		panel.add(analyzebtn);
-
+		createBtn.setBounds(80, 155, 128, 40);
+		panel.add(createBtn);
 	}
 }
