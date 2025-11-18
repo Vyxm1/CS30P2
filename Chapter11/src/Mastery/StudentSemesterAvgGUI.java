@@ -1,3 +1,15 @@
+/*
+
+Program: StudentSemesterAvgGUI.java          Last Date of this Revision: Nov. 18, 2025
+
+Purpose: Modify the SemesterAvg application to read and write to files.
+
+Author: Vyom Patel 
+School: CHHS
+Course: Computer Programming 30
+
+ */
+
 package Mastery;
 
 import java.awt.EventQueue;
@@ -10,14 +22,22 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.DecimalFormat;
-import java.text.NumberFormat;
-
 import javax.swing.border.LineBorder;
+
+/**
+ * A Java Swing GUI application that allows users to enter a student's name,
+ * grade level, semester number, and four class grades. The application
+ * calculates the average grade, displays it, and can save the information
+ * into a text file or view the contents of that file.
+ */
 
 public class StudentSemesterAvgGUI {
 
@@ -33,7 +53,8 @@ public class StudentSemesterAvgGUI {
 	private File dataFile = new File(FILE_NAME);
 
 	/**
-	 * Launch the application.
+	 * Launches the application GUI.
+	 * Uses EventQueue.invokeLater to ensure thread-safe UI launching.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -49,20 +70,22 @@ public class StudentSemesterAvgGUI {
 	}
 
 	/**
-	 * Create the application.
+	 * Constructor that initializes the GUI components.
 	 */
 	public StudentSemesterAvgGUI() {
 		initialize();
 	}
 
 	/**
-	 * Initialize the contents of the frame.
+	 * Sets up all GUI components: labels, text fields, buttons, and event handlers.
+	 * Also configures placeholder text behavior and file reading/writing logic.
 	 */
 	private void initialize()
 	{
+		/* Formatter for grade and average output */
 		DecimalFormat decimalFormatter = new DecimalFormat("0.#");
 
-
+		/* Setup main frame */
 		frmSemesterAverageCalculator = new JFrame();
 		frmSemesterAverageCalculator.setTitle("Student Grade Application");
 		frmSemesterAverageCalculator.setBounds(100, 100, 640, 480);
@@ -72,6 +95,7 @@ public class StudentSemesterAvgGUI {
 		frmSemesterAverageCalculator.getContentPane().add(panel, BorderLayout.CENTER);
 		panel.setLayout(null);
 
+		/* Create labels */
 		JLabel nameLbl = new JLabel("Student Name: ");
 		nameLbl.setFont(new Font("Verdana", Font.PLAIN, 20));
 		nameLbl.setBounds(0, 0, 171, 25);
@@ -107,6 +131,12 @@ public class StudentSemesterAvgGUI {
 		gradeLbl_4.setBounds(0, 154, 232, 25);
 		panel.add(gradeLbl_4);
 
+
+		/*
+        Text fields with placeholder logic using FocusListeners.
+        Each behaves like modern UI placeholders: turns gray when not focused,
+        clears when clicked.
+		 */
 		nameInput = new JTextField();
 		nameInput.addFocusListener(new FocusAdapter() {
 			@Override
@@ -289,6 +319,7 @@ public class StudentSemesterAvgGUI {
 		grade4Input.setBounds(276, 158, 348, 25);
 		panel.add(grade4Input);
 
+		/* Output area */
 		JTextArea disp = new JTextArea();
 		disp.setEditable(false);
 		disp.setBounds(0, 214, 624, 172);
@@ -305,20 +336,27 @@ public class StudentSemesterAvgGUI {
 		avgDisp.setBounds(276, 187, 348, 25);
 		panel.add(avgDisp);
 
+		/*
+        Button to save the input data to a file.
+        Includes validation and exception handling.
+		 */
 		JButton btnSave = new JButton("Save to File");
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
 			{
+				/* Read input values */
 				String studentName = nameInput.getText().trim();
 				String gradeLevel = yearInput.getText().trim();
 				String semesterNum = semNumInput.getText().trim();
+
 				String numGrade1 = grade1Input.getText().trim();
 				String numGrade2 = grade2Input.getText().trim();
 				String numGrade3 = grade3Input.getText().trim();
 				String numGrade4 = grade4Input.getText().trim();
 
+				/* Validate input */
 				if (studentName.isEmpty() || studentName.equals("Enter Student Name here")
-						|| gradeLevel.isEmpty() || gradeLevel.equals("Enter Student's Grad here")
+						|| gradeLevel.isEmpty() || gradeLevel.equals("Enter Student's Grade here")
 						|| semesterNum.isEmpty() || semesterNum.equals("Enter the Semester Number here")
 						|| numGrade1.isEmpty() || numGrade1.equals("Enter First Grade")
 						|| numGrade2.isEmpty() || numGrade2.equals("Enter Second Grade")
@@ -329,13 +367,21 @@ public class StudentSemesterAvgGUI {
 							"Input Error", JOptionPane.WARNING_MESSAGE);
 				}
 
-				double AvgGrade = ((Double.parseDouble(numGrade1)) + (Double.parseDouble(numGrade2)) + (Double.parseDouble(numGrade3)) + (Double.parseDouble(numGrade4))) / 4;
-				avgDisp.setText(decimalFormatter.format(AvgGrade) + "%");
+
 
 				try
 				{
+					/* Compute average */
+					double avgGrade = ((Double.parseDouble(numGrade1)) 
+							+ (Double.parseDouble(numGrade2)) 
+							+ (Double.parseDouble(numGrade3)) 
+							+ (Double.parseDouble(numGrade4))) / 4;
+
+					avgDisp.setText(decimalFormatter.format(avgGrade) + "%");
+
+					/* Prepare file writing */
 					StringBuilder studentData = new StringBuilder();
-					FileWriter out = new FileWriter(dataFile);
+					FileWriter out = new FileWriter(dataFile, true);
 					BufferedWriter writeFile = new BufferedWriter(out);
 
 					double grade1 = Double.parseDouble(numGrade1);
@@ -343,18 +389,27 @@ public class StudentSemesterAvgGUI {
 					double grade3 = Double.parseDouble(numGrade3);
 					double grade4 = Double.parseDouble(numGrade4);
 
-
-					studentData.append("Name: ").append(studentName).append("Grade Level: ").append(gradeLevel).append("Semester: ").append(semesterNum);
-					studentData.append("Grades: ").append(grade1).append(grade2).append(grade3).append(grade4);
-
+					studentData.append("Name: ").append(studentName)
+					.append(" Grade Level: ")
+					.append(gradeLevel).append(" Semester: ")
+					.append(semesterNum);
+					studentData.append(" Grades: ")
+					.append(decimalFormatter.format(grade1)).append("%, ")
+					.append(decimalFormatter.format(grade2)).append("%, ")
+					.append(decimalFormatter.format(grade3)).append("%, ")
+					.append(decimalFormatter.format(grade4)).append("%, ");
+					studentData.append(" Average: ").append(decimalFormatter.format(avgGrade)).append("%");
 
 					writeFile.write(studentData.toString());
 					writeFile.newLine();
 
-
-
 					writeFile.close();
 					out.close();
+
+					JOptionPane.showMessageDialog(null, "Data saved successfully to file " + FILE_NAME,
+							"Message", JOptionPane.INFORMATION_MESSAGE);
+
+					disp.setText("Press 'View File contents' to read data of file " + FILE_NAME);
 
 				}
 				catch (IOException err)
@@ -374,17 +429,47 @@ public class StudentSemesterAvgGUI {
 		btnSave.setBounds(120, 397, 189, 33);
 		panel.add(btnSave);
 
+		/*
+        Button to read and display all stored grade records from Grades.txt
+		 */
 		JButton btnViewFileContents = new JButton("View File Contents");
 		btnViewFileContents.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
 			{
+				disp.setText(null);
 
+				try
+				{
+					FileReader in = new FileReader(dataFile);
+					BufferedReader readFile = new BufferedReader(in);
 
+					String line;
+					StringBuilder output = new StringBuilder();
+
+					while ((line = readFile.readLine()) != null)
+					{
+						output.append(line).append("\n");
+					}
+
+					readFile.close();
+					in.close();
+
+					disp.setText(output.toString());
+				}
+				catch (FileNotFoundException err)
+				{
+					JOptionPane.showMessageDialog(null, "File could not be found!\n" + err.getMessage(),
+							"File Error", JOptionPane.ERROR_MESSAGE);
+				}
+				catch (IOException err)
+				{
+					JOptionPane.showMessageDialog(null, "Error reading file:\n" + err.getMessage(),
+							"File Error", JOptionPane.ERROR_MESSAGE);
+				}
 			}
 		});
 		btnViewFileContents.setFont(new Font("Verdana", Font.BOLD, 14));
 		btnViewFileContents.setBounds(323, 397, 189, 33);
 		panel.add(btnViewFileContents);
-
 	}
 }
