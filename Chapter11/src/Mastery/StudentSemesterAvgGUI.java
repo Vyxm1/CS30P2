@@ -367,8 +367,6 @@ public class StudentSemesterAvgGUI {
 							"Input Error", JOptionPane.WARNING_MESSAGE);
 				}
 
-
-
 				try
 				{
 					/* Compute average */
