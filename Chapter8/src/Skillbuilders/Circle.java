@@ -79,11 +79,10 @@ public class Circle
 
 
 	/** 
-	 * Determines if the object is equal to another
-	 * Circle object.
+	 * Determines if the object is equal to another Circle object.
 	 * pre: none
-	 * post: true has been returned if the objects have 
-	 * the same radii. false has been returned otherwise.
+	 * post: true has been returned if the objects have the same radii.
+	 * false has been returned otherwise.
 	 */
 	public boolean equals(Object obj)
 	{
