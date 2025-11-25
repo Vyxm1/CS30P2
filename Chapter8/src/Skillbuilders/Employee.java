@@ -16,5 +16,7 @@ public abstract class Employee
 		return(firstName + " " + lastName);
 	}
 
+	
+// 	Declaration of Pay
 	abstract double pay(double period);
 }
