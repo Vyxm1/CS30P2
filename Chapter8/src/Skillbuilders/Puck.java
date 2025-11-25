@@ -65,8 +65,6 @@ public class Puck extends Disk
 		}
 	}
 
-
-
 	public String toString()
 	{
 		return("Puck radius: " + getRadius() 
