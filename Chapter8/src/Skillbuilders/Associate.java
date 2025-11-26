@@ -29,7 +29,7 @@ public class Associate extends Employee
 
 	public String toString()
 	{
-		return(super.toString() + ", Associate/nHourly Pay: " + hourlyPayRate);
+		return(super.toString() + ", Associate\nHourly Pay: " + hourlyPayRate);
 	}
 
 }
