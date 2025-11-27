@@ -1,6 +1,8 @@
 package Skillbuilders;
 
-public class Puck extends Disk
+
+// Implements Comparable class with Object type Puck only
+public class Puck extends Disk implements Comparable<Puck>
 {
 
 	private double weight;
@@ -71,6 +73,25 @@ public class Puck extends Disk
 		+ "\nThickness: " + getThickness() 
 		+ "\nWeight: " + getWeight() 
 		+ "\nDivision: " + getDivision());
+	}
+
+
+	//	Puck Pt. 2
+	@Override
+	public int compareTo(Puck p)
+	{
+		if (getWeight() < p.getWeight())
+		{
+			return(-1);
+		}
+		else if (getWeight() > p.getWeight())
+		{
+			return(1);
+		}
+		else
+		{
+			return 0;
+		}
 	}
 
 }
