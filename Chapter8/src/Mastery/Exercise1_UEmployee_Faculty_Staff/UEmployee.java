@@ -1,5 +1,4 @@
 /*
-
 Program: UEmployee.java          Last Date of this Revision: Dec. 1, 2025
 
 Purpose: Create a UEmployee class that contains member variables for the university employee name and salary.

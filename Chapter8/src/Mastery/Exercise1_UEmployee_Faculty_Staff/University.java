@@ -1,5 +1,5 @@
 /*
-Program: Faculty.java          Last Date of this Revision: Dec. 1, 2025
+Program: University.java          Last Date of this Revision: Dec. 1, 2025
 
 Purpose: Create a UEmployee class that contains member variables for the university employee name and salary.
 		The UEmployee class should contain member methods for returning the employee name and salary.
@@ -15,18 +15,23 @@ Course: Computer Programming 30
 
 package Mastery.Exercise1_UEmployee_Faculty_Staff;
 
-public class Faculty extends UEmployee
+public class University
 {
-	private String departmentName;
 
-	public Faculty(String n, double s, String dn)
+	public static void main(String[] args)
 	{
-		super(n, s);
-		departmentName = dn;
-	}
+		Faculty f1 = new Faculty("Joe", 50000, "Computer Science");
+		Staff s1 = new Staff("Bob", 60000, "Office Admin");
 
-	public String getDepartmentName()
-	{
-		return(departmentName);
+		System.out.println("Faculty:"
+				+ "\nName: " + f1.getName()
+				+ "\nSalary: $" + f1.getSalary()
+				+ "\nDepartment Name: " + f1.getDepartmentName());
+		System.out.println();
+
+		System.out.println("Staff:"
+				+ "\nName: " + s1.getName()
+				+ "\nSalary: $" + s1.getSalary()
+				+ "\nJob Title: " + s1.getJobTitle());
 	}
 }
