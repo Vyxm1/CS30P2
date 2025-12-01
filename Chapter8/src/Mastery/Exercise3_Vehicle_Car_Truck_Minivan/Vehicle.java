@@ -14,4 +14,26 @@ public abstract class Vehicle
 		seatingCapacity = sc;
 		cargoVolume = cv;
 	}
+	
+	public double getFuelEconomyCity()
+	{
+		return(fuelEconomyCity);
+	}
+	
+	public double getFuelEconomyHwy()
+	{
+		return(fuelEconomyHwy);
+	}
+	
+	public int getSeatingCapacity()
+	{
+		return(seatingCapacity);
+	}
+	
+	public double getCargoVolume()
+	{
+		return(cargoVolume);
+	}
+	
+	
 }
