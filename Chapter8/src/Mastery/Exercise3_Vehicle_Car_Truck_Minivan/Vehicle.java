@@ -35,5 +35,5 @@ public abstract class Vehicle
 		return(cargoVolume);
 	}
 	
-	
+	public abstract String getType();
 }
