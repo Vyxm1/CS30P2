@@ -18,9 +18,14 @@ package Mastery.Exercise1_UEmployee_Faculty_Staff;
 public class University
 {
 
+	/**
+     * The entry point of the program. Creates Faculty and Staff objects and prints their information.
+     *
+     * @param args command line arguments (unused)
+     */
 	public static void main(String[] args)
 	{
-		Faculty f1 = new Faculty("Joe", 50000, "Computer Science");
+		Faculty f1 = new Faculty("Joe", 50000, "Math");
 		Staff s1 = new Staff("Bob", 60000, "Office Admin");
 
 		System.out.println("Faculty:"

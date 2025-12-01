@@ -20,23 +20,44 @@ public class UEmployee
 	private String empName;
 	private double salary;
 
+	/** 
+	 * Constructs a UEmployee with the specified name and salary.
+	 *
+	 * @param n the employee's name
+	 * @param s the employee's salary
+	 */
 	public UEmployee(String n, double s)
 	{
 		empName = n;
 		salary = s;
 	}
 
+	/**
+	 * Returns the employee's name.
+	 *
+	 * @return the name of the employee
+	 */
 	public String getName()
 	{
 		return(empName);
 	}
 
 
+	/**
+	 * Returns the employee's salary.
+	 *
+	 * @return the salary of the employee
+	 */
 	public double getSalary()
 	{
 		return(salary);
 	}
 
+	/**
+	 * Returns a formatted string representation of the employee.
+	 *
+	 * @return the employee information as a string
+	 */
 	public String toString()
 	{
 		return("Employee name: " + empName + ", Salary: " + salary + "\n");

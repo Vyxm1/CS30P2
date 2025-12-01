@@ -18,12 +18,24 @@ public class Staff extends UEmployee
 {
 	private String jobTitle;
 
+	/**
+     * Constructs a Staff member with a name, salary, and job title.
+    *
+    * @param n the staff member's name
+    * @param s the staff member's salary
+    * @param t the job title
+    */
 	public Staff(String n, double s, String t)
 	{
 		super(n, s);
 		jobTitle = t;
 	}
 
+	/**
+     * Returns the staff member's job title.
+     *
+     * @return the job title
+     */
 	public String getJobTitle()
 	{
 		return(jobTitle);
