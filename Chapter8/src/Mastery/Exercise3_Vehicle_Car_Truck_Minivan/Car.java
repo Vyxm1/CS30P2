@@ -17,27 +17,52 @@ package Mastery.Exercise3_Vehicle_Car_Truck_Minivan;
 public class Car extends Vehicle
 {
 	private String brand;
-	
+
+	/**
+     * Constructs a Car with fuel economy, seating capacity, cargo volume, 
+     * and a brand.
+     *
+     * @param fc city fuel economy
+     * @param fh highway fuel economy
+     * @param sc seating capacity
+     * @param cv cargo volume
+     * @param b  brand of the car
+     */
 	public Car(double fc, double fh, int sc, double cv, String b)
 	{
 		super(fc, fh, sc, cv);
 		brand = b;
 	}
 
+	/**
+     * Returns the type of this vehicle ("Car").
+     *
+     * @return the string "Car"
+     */
 	@Override
 	public String getType()
 	{
 		return("Car");
 	}
-	
+
+	/**
+     * Returns the car's brand.
+     *
+     * @return brand name
+     */
 	public String getBrand()
 	{
 		return(brand);
 	}
-	
+
+	/**
+     * Returns a formatted string containing all car information.
+     *
+     * @return string representation of the car
+     */
 	public String toString()
 	{
-        return();
-    }
-	
+		return(getType() + ":\n" + super.toString() + "\nBrand: " + brand);
+	}
+
 }

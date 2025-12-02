@@ -16,17 +16,52 @@ package Mastery.Exercise3_Vehicle_Car_Truck_Minivan;
 
 public class Minivan extends Vehicle
 {
+	private int numSlidingDoors;
 
-	public Minivan(double fc, double fh, int sc, double cv)
+	/**
+     * Constructs a Minivan with fuel economy, seating capacity, cargo volume,
+     * and number of sliding doors.
+     *
+     * @param fc city fuel economy
+     * @param fh highway fuel economy
+     * @param sc seating capacity
+     * @param cv cargo volume
+     * @param nd number of sliding doors
+     */
+	public Minivan(double fc, double fh, int sc, double cv, int nd)
 	{
 		super(fc, fh, sc, cv);
-		
+		numSlidingDoors = nd;
 	}
 
+	/**
+     * Returns the type of this vehicle ("Minivan").
+     *
+     * @return the string "Minivan"
+     */
 	@Override
 	public String getType()
 	{
 		return("Minivan");
 	}
-	
+
+	/**
+     * Returns the number of sliding doors.
+     *
+     * @return number of sliding doors
+     */
+	public int getNumSlidingDoors()
+	{
+		return(numSlidingDoors);
+	}
+
+	/**
+     * Returns a formatted string containing all minivan information.
+     *
+     * @return string representation of the minivan
+     */
+	public String toString()
+	{
+		return(getType() + ":\n" + super.toString() + "\nNumber of Sliding Doors: " + numSlidingDoors);
+	}
 }

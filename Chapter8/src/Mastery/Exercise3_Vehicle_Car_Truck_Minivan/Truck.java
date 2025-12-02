@@ -16,16 +16,52 @@ package Mastery.Exercise3_Vehicle_Car_Truck_Minivan;
 
 public class Truck extends Vehicle
 {
+	private int numWheels;
 
-	public Truck(double fc, double fh, int sc, double cv)
+	/**
+     * Constructs a Truck with fuel economy, seating capacity, cargo volume,
+     * and number of wheels.
+     *
+     * @param fc city fuel economy
+     * @param fh highway fuel economy
+     * @param sc seating capacity
+     * @param cv cargo volume
+     * @param nw number of wheels
+     */
+	public Truck(double fc, double fh, int sc, double cv, int nw)
 	{
 		super(fc, fh, sc, cv);
+		numWheels = nw;
 	}
 
+	/**
+     * Returns the type of this vehicle ("Truck").
+     *
+     * @return the string "Truck"
+     */
 	@Override
 	public String getType()
 	{
 		return("Truck");
 	}
-	
+
+	/**
+     * Returns the number of wheels.
+     *
+     * @return number of wheels
+     */
+	public int getNumWheels()
+	{
+		return(numWheels);
+	}
+
+	/**
+     * Returns a formatted string containing all truck information.
+     *
+     * @return string representation of the truck
+     */
+	public String toString()
+	{
+		return(getType() + ":\n" + super.toString() + "\nNumber of Wheels: " + numWheels);
+	}
 }
