@@ -60,6 +60,7 @@ public class Minivan extends Vehicle
      *
      * @return string representation of the minivan
      */
+	@Override
 	public String toString()
 	{
 		return(getType() + ":\n" + super.toString() + "\nNumber of Sliding Doors: " + numSlidingDoors);

@@ -60,6 +60,7 @@ public class Car extends Vehicle
      *
      * @return string representation of the car
      */
+	@Override
 	public String toString()
 	{
 		return(getType() + ":\n" + super.toString() + "\nBrand: " + brand);

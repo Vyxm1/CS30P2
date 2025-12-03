@@ -60,6 +60,7 @@ public class Truck extends Vehicle
      *
      * @return string representation of the truck
      */
+	@Override
 	public String toString()
 	{
 		return(getType() + ":\n" + super.toString() + "\nNumber of Wheels: " + numWheels);
