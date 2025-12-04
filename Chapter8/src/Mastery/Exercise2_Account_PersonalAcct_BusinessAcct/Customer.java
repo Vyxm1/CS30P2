@@ -1,3 +1,18 @@
+/*
+Program: Customer.java          Last Date of this Revision: Dec. 4, 2025
+
+Purpose: Create PersonalAcct and BusinessAcct classes that inherit the Account class presented in Chapter 7.
+		A personal account requires a minimum balance of $100. If the balance falls below this amount, then
+		$2.00 is charged (withdrawn) to the account. A business account requires a minimum balance of $500,
+		otherwise the account is charged $10. Create client code to test the classes. 
+
+
+Author: Vyom Patel 
+School: CHHS
+Course: Computer Programming 30
+
+ */
+
 package Mastery.Exercise2_Account_PersonalAcct_BusinessAcct;
 
 import java.util.*;
@@ -29,24 +44,36 @@ public class Customer
 		postalCode = pCode;
 	}
 
+	/**
+	 * Prompts the user to enter a new street name.
+	 */
 	public void changeStreet()
 	{
 		System.out.println("Enter new Street Name: ");
 		street = input.nextLine();
 	}
 
+	/**
+	 * Prompts the user to enter a new city.
+	 */
 	public void changeCity()
 	{
 		System.out.println("Enter new City: ");
 		city = input.nextLine();
 	}
 
+	/**
+	 * Prompts the user to enter a new province.
+	 */
 	public void changeProvince()
 	{
 		System.out.println("Enter new Province: ");
 		province = input.nextLine();
 	}
 
+	/**
+	 * Prompts the user to enter a new postal code.
+	 */
 	public void changePostalCode()
 	{
 		System.out.println("Enter new Postal Code: ");
@@ -57,17 +84,14 @@ public class Customer
 	/** 
 	 * Returns a String that represents the Customer object.
 	 * pre: none
-	 * post: A string representing the Customer object has 
-	 * been returned.
+	 * post: A string representing the Customer object has been returned.
 	 */
 	public String toString()
 	{
-		return(firstName + " " + lastName 
+		return("Name: " + firstName + " " + lastName 
 				+ "\nStreet: " + street
 				+ "\nCity: " + city 
 				+ "\nProvince: " + province 
-				+ "\nPostal Code: " + postalCode);
+				+ "\nPostal Code: " + postalCode + "\n");
 	}
-
 }
-
