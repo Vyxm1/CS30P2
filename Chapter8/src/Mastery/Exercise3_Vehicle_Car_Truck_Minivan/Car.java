@@ -19,15 +19,13 @@ public class Car extends Vehicle
 	private String brand;
 
 	/**
-     * Constructs a Car with fuel economy, seating capacity, cargo volume, 
-     * and a brand.
-     *
-     * @param fc city fuel economy
-     * @param fh highway fuel economy
-     * @param sc seating capacity
-     * @param cv cargo volume
-     * @param b  brand of the car
-     */
+	 * Construct a Car with full vehicle details and a brand.
+	 * @param fc city fuel economy
+	 * @param fh highway fuel economy
+	 * @param sc seating capacity
+	 * @param cv cargo volume
+	 * @param b brand/make of the car
+	 */
 	public Car(double fc, double fh, int sc, double cv, String b)
 	{
 		super(fc, fh, sc, cv);
@@ -35,10 +33,9 @@ public class Car extends Vehicle
 	}
 
 	/**
-     * Returns the type of this vehicle ("Car").
-     *
-     * @return the string "Car"
-     */
+	 * Get the type of vehicle.
+	 * @return "Car"
+	 */
 	@Override
 	public String getType()
 	{
@@ -46,20 +43,18 @@ public class Car extends Vehicle
 	}
 
 	/**
-     * Returns the car's brand.
-     *
-     * @return brand name
-     */
+	 * Get the brand of the car.
+	 * @return car brand
+	 */
 	public String getBrand()
 	{
 		return(brand);
 	}
 
 	/**
-     * Returns a formatted string containing all car information.
-     *
-     * @return string representation of the car
-     */
+	 * Return a formatted string of car details.
+	 * @return car description
+	 */
 	@Override
 	public String toString()
 	{

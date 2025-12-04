@@ -19,12 +19,11 @@ public class Staff extends UEmployee
 	private String jobTitle;
 
 	/**
-     * Constructs a Staff member with a name, salary, and job title.
-    *
-    * @param n the staff member's name
-    * @param s the staff member's salary
-    * @param t the job title
-    */
+	 * Create a Staff member with the given name, salary, and job title.
+	 * @param n the staff member's name
+	 * @param s the staff member's salary
+	 * @param t the job title of the staff member
+	 */
 	public Staff(String n, double s, String t)
 	{
 		super(n, s);
@@ -32,10 +31,9 @@ public class Staff extends UEmployee
 	}
 
 	/**
-     * Returns the staff member's job title.
-     *
-     * @return the job title
-     */
+	 * Retrieve the job title.
+	 * @return the staff member's job title
+	 */
 	public String getJobTitle()
 	{
 		return(jobTitle);

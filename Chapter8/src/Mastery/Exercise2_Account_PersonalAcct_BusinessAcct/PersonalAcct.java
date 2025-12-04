@@ -17,37 +17,36 @@ package Mastery.Exercise2_Account_PersonalAcct_BusinessAcct;
 
 public class PersonalAcct extends Account
 {
+	// Minimum balance and penalty charge
 	final private double MIN_BAL = 100;
 	final private double CHARGE = 2;
-	
+
 	/**
-     * Constructs a PersonalAcct with full customer data.
-     */
+	 * Construct a PersonalAcct with starting balance and customer info.
+	 */
 	public PersonalAcct(double bal, String fName, String lName, String st, String c, String p, String pCode)
 	{
 		super(bal, fName, lName, st, c, p, pCode);
 	}
-	
+
 	/**
-     * Constructs a PersonalAcct using only an account ID.
-     */
+	 * Construct a PersonalAcct using an existing account ID.
+	 */
 	public PersonalAcct(String ID)
 	{
 		super(ID);
 	}
-	
+
 	/**
-     * Performs a withdrawal and applies a $2 charge if
-     * the resulting balance falls below the minimum.
-     *
-     * @param amt amount to withdraw
-     */
+	 * Withdraw money and apply penalty if minimum balance is not maintained.
+	 * @param amt withdrawal amount
+	 */
 	@Override
 	public void withdrawal(double amt)
 	{
 		super.withdrawal(amt);
-		
-		
+
+
 		if (getBalance() < MIN_BAL)
 		{
 			System.out.println("Your balance is below $100, charging $2.\n");

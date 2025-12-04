@@ -18,14 +18,14 @@ package Mastery.Exercise2_Account_PersonalAcct_BusinessAcct;
 import java.text.NumberFormat;
 
 /**
- * The TestAccounts class demonstrates the functionality of the
- * Account hierarchy by creating personal and business accounts,
- * performing withdrawals, and printing results.
+ * The TestAccounts class tests the behavior of PersonalAcct and BusinessAcct.
+ * It creates sample accounts, performs withdrawals, and prints results.
  * 
  */
 
 public class TestAccounts
 {
+
 
 	public static void main(String[] args)
 	{
@@ -34,13 +34,13 @@ public class TestAccounts
 		final double BUSINESS_WITHDRAWAL = 600;
 		PersonalAcct persAcc = new PersonalAcct(1000, "Joe", "Bob", "14 St.", "Toronto", "Ontario", "A1A1A1");
 		BusinessAcct BusAcc = new BusinessAcct(1000, "Sam", "Rob", "11 St.", "Toronto", "Ontario", "A2A2A2");
-		
+
 		System.out.println("----- TEST PERSONAL ACCOUNT -----\n");
 		System.out.println(persAcc);
 		System.out.println("\nWithdrawing " + money.format(PERSONAL_WITHDRAWAL) + " from personal Account.");
 		persAcc.withdrawal(PERSONAL_WITHDRAWAL);
 		System.out.println(persAcc);
-		
+
 		System.out.println("\n----- TEST BUSINESS ACCOUNT -----\n");
 		System.out.println(BusAcc);
 		System.out.println("\nWithdrawing " + money.format(BUSINESS_WITHDRAWAL) + " from business Account.");

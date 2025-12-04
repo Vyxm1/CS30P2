@@ -19,15 +19,13 @@ public class Truck extends Vehicle
 	private int numWheels;
 
 	/**
-     * Constructs a Truck with fuel economy, seating capacity, cargo volume,
-     * and number of wheels.
-     *
-     * @param fc city fuel economy
-     * @param fh highway fuel economy
-     * @param sc seating capacity
-     * @param cv cargo volume
-     * @param nw number of wheels
-     */
+	 * Construct a Truck with full vehicle details and wheel count.
+	 * @param fc city fuel economy
+	 * @param fh highway fuel economy
+	 * @param sc seating capacity
+	 * @param cv cargo volume
+	 * @param nw number of wheels
+	 */
 	public Truck(double fc, double fh, int sc, double cv, int nw)
 	{
 		super(fc, fh, sc, cv);
@@ -35,10 +33,9 @@ public class Truck extends Vehicle
 	}
 
 	/**
-     * Returns the type of this vehicle ("Truck").
-     *
-     * @return the string "Truck"
-     */
+	 * Get the type of vehicle.
+	 * @return "Truck"
+	 */
 	@Override
 	public String getType()
 	{
@@ -46,20 +43,18 @@ public class Truck extends Vehicle
 	}
 
 	/**
-     * Returns the number of wheels.
-     *
-     * @return number of wheels
-     */
+	 * Get the number of wheels.
+	 * @return wheel count
+	 */
 	public int getNumWheels()
 	{
 		return(numWheels);
 	}
 
 	/**
-     * Returns a formatted string containing all truck information.
-     *
-     * @return string representation of the truck
-     */
+	 * Return a formatted string describing the truck.
+	 * @return truck description
+	 */
 	@Override
 	public String toString()
 	{

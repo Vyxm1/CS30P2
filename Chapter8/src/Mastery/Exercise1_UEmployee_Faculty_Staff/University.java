@@ -19,10 +19,9 @@ public class University
 {
 
 	/**
-     * The entry point of the program. Creates Faculty and Staff objects and prints their information.
-     *
-     * @param args command line arguments (unused)
-     */
+	 * Main driver method for demonstrating UEmployee, Faculty, and Staff.
+	 * @param args command-line arguments (not used)
+	 */
 	public static void main(String[] args)
 	{
 		Faculty f1 = new Faculty("Joe", 50000, "Math");

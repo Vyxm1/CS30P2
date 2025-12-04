@@ -45,7 +45,7 @@ public class Customer
 	}
 
 	/**
-	 * Prompts the user to enter a new street name.
+	 * Change the street address via user input.
 	 */
 	public void changeStreet()
 	{
@@ -54,7 +54,7 @@ public class Customer
 	}
 
 	/**
-	 * Prompts the user to enter a new city.
+	 * Change the city via user input.
 	 */
 	public void changeCity()
 	{
@@ -63,7 +63,7 @@ public class Customer
 	}
 
 	/**
-	 * Prompts the user to enter a new province.
+	 * Change the province via user input.
 	 */
 	public void changeProvince()
 	{
@@ -72,7 +72,7 @@ public class Customer
 	}
 
 	/**
-	 * Prompts the user to enter a new postal code.
+	 * Change the postal code via user input.
 	 */
 	public void changePostalCode()
 	{

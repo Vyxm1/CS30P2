@@ -17,10 +17,9 @@ package Mastery.Exercise3_Vehicle_Car_Truck_Minivan;
 public class Garage
 {
 	/**
-     * Creates several Vehicle objects and prints their information.
-     *
-     * @param args command line arguments (unused)
-     */
+	 * Main method that creates and displays vehicles.
+	 * @param args command-line arguments (not used)
+	 */
 	public static void main(String[] args)
 	{
 		Car c = new Car(5.6, 6.2, 4, 100, "Honda");

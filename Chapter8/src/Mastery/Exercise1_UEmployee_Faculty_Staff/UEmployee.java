@@ -21,10 +21,9 @@ public class UEmployee
 	private double salary;
 
 	/** 
-	 * Constructs a UEmployee with the specified name and salary.
-	 *
-	 * @param n the employee's name
-	 * @param s the employee's salary
+	 * Create a UEmployee with the given name and salary.
+	 * @param n the employee name
+	 * @param s the employee salary
 	 */
 	public UEmployee(String n, double s)
 	{
@@ -33,8 +32,7 @@ public class UEmployee
 	}
 
 	/**
-	 * Returns the employee's name.
-	 *
+	 * Retrieve the employee name.
 	 * @return the name of the employee
 	 */
 	public String getName()
@@ -44,8 +42,7 @@ public class UEmployee
 
 
 	/**
-	 * Returns the employee's salary.
-	 *
+	 * Retrieve the employee salary.
 	 * @return the salary of the employee
 	 */
 	public double getSalary()
@@ -54,9 +51,8 @@ public class UEmployee
 	}
 
 	/**
-	 * Returns a formatted string representation of the employee.
-	 *
-	 * @return the employee information as a string
+	 * Return a string representation of the employee.
+	 * @return formatted employee details
 	 */
 	public String toString()
 	{

@@ -38,7 +38,7 @@ public class Account
 		balance = bal;
 		cust = new Customer(fName, lName, st, c, p, pCode);
 		acctID = fName.substring(0,1) + lName;
-		
+
 	}
 
 

@@ -19,15 +19,13 @@ public class Minivan extends Vehicle
 	private int numSlidingDoors;
 
 	/**
-     * Constructs a Minivan with fuel economy, seating capacity, cargo volume,
-     * and number of sliding doors.
-     *
-     * @param fc city fuel economy
-     * @param fh highway fuel economy
-     * @param sc seating capacity
-     * @param cv cargo volume
-     * @param nd number of sliding doors
-     */
+	 * Construct a Minivan with vehicle details and sliding-door count.
+	 * @param fc city fuel economy
+	 * @param fh highway fuel economy
+	 * @param sc seating capacity
+	 * @param cv cargo volume
+	 * @param nd number of sliding doors
+	 */
 	public Minivan(double fc, double fh, int sc, double cv, int nd)
 	{
 		super(fc, fh, sc, cv);
@@ -35,10 +33,9 @@ public class Minivan extends Vehicle
 	}
 
 	/**
-     * Returns the type of this vehicle ("Minivan").
-     *
-     * @return the string "Minivan"
-     */
+	 * Get the type of vehicle.
+	 * @return "Minivan"
+	 */
 	@Override
 	public String getType()
 	{
@@ -46,20 +43,18 @@ public class Minivan extends Vehicle
 	}
 
 	/**
-     * Returns the number of sliding doors.
-     *
-     * @return number of sliding doors
-     */
+	 * Get the number of sliding doors.
+	 * @return sliding-door count
+	 */
 	public int getNumSlidingDoors()
 	{
 		return(numSlidingDoors);
 	}
 
 	/**
-     * Returns a formatted string containing all minivan information.
-     *
-     * @return string representation of the minivan
-     */
+	 * Return a formatted string describing the minivan.
+	 * @return minivan details
+	 */
 	@Override
 	public String toString()
 	{

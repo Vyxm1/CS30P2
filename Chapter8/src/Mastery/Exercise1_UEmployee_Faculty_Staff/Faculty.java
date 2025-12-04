@@ -20,12 +20,11 @@ public class Faculty extends UEmployee
 	private String departmentName;
 
 	/**
-     * Constructs a Faculty member with a name, salary, and department name.
-     *
-     * @param n  the faculty member's name
-     * @param s  the salary of the faculty member
-     * @param dn the department name
-     */
+	 * Create a Faculty member with the given name, salary, and department.
+	 * @param n  the faculty member's name
+	 * @param s  the faculty member's salary
+	 * @param dn the name of the department
+	 */
 	public Faculty(String n, double s, String dn)
 	{
 		super(n, s);
@@ -33,10 +32,9 @@ public class Faculty extends UEmployee
 	}
 
 	/**
-     * Returns the department name of the faculty member.
-     *
-     * @return the department name
-     */
+	 * Retrieve the department name.
+	 * @return the name of the faculty member's department
+	 */
 	public String getDepartmentName()
 	{
 		return(departmentName);

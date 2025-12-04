@@ -21,7 +21,7 @@ public class BusinessAcct extends Account
 	final private double CHARGE = 10;
 	
 	/**
-     * Constructs a BusinessAcct with complete customer information.
+     * Construct a BusinessAcct with initial balance and customer information.
      */
 	public BusinessAcct(double bal, String fName, String lName, String st, String c, String p, String pCode)
 	{
@@ -29,7 +29,7 @@ public class BusinessAcct extends Account
 	}
 
 	/**
-     * Constructs a BusinessAcct with only an account ID.
+     * Construct a BusinessAcct with an existing account ID.
      */
 	public BusinessAcct(String ID)
 	{
@@ -37,9 +37,7 @@ public class BusinessAcct extends Account
 	}
 
 	/**
-     * Performs a withdrawal and applies a $10 service charge
-     * if the balance falls below the required minimum.
-     *
+     * Withdraw money and apply penalty if minimum balance is not maintained.
      * @param amt withdrawal amount
      */
 	@Override
