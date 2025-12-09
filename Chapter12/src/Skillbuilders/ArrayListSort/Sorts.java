@@ -12,7 +12,8 @@ package Skillbuilders.ArrayListSort;
 	 * post: items has been sorted from low to high
 	 */
 	public static void selectionSort(ArrayList<Double> items) 
-	{		//review
+	{
+		//review
 		Double element1, element2;
 
 		for (int index = 0; index < items.size(); index++) 
@@ -38,12 +39,14 @@ package Skillbuilders.ArrayListSort;
 	 * post: items has been sorted from low to high
 	 */
 	/*
-	 public static void selectionSort(int[] items) {
-	 
-
-		for (int index = 0; index < items.length; index++) {
-			for (int subIndex = index; subIndex < items.length; subIndex++) {
-				if (items[subIndex] < items[index]) {
+	 public static void selectionSort(int[] items)
+	 {
+		for (int index = 0; index < items.length; index++)
+		{
+			for (int subIndex = index; subIndex < items.length; subIndex++)
+			{
+				if (items[subIndex] < items[index])
+				{
 					int temp = items[index];
 					items[index] = items[subIndex];
 					items[subIndex] = temp;
@@ -60,11 +63,15 @@ package Skillbuilders.ArrayListSort;
 	 */
 	
 	/*
-	public static void selectionSort(Comparable[] items) {
+	public static void selectionSort(Comparable[] items)
+	{
 
-		for (int index = 0; index < items.length; index++) {
-			for (int subIndex = index; subIndex < items.length; subIndex++) {
-				if (items[subIndex].compareTo(items[index]) < 0) {
+		for (int index = 0; index < items.length; index++)
+		{
+			for (int subIndex = index; subIndex < items.length; subIndex++)
+			{
+				if (items[subIndex].compareTo(items[index]) < 0)
+				{
 					Comparable temp = items[index];
 					items[index] = items[subIndex];
 					items[subIndex] = temp;
@@ -85,20 +92,26 @@ package Skillbuilders.ArrayListSort;
 	{
 		int temp, previousIndex;
 
-		for (int index = 1; index < items.length; index++) {	//start with second item
+		for (int index = 1; index < items.length; index++)
+		{
+		//start with second item
 			temp = items[index];
 			previousIndex = index - 1;
-			while ((items[previousIndex] > temp) && (previousIndex > 0)) {
+			while ((items[previousIndex] > temp) && (previousIndex > 0))
+			{
 				items[previousIndex + 1] = items[previousIndex];
 				// decrease index to compare current item to next previous item 
 				previousIndex -= 1;
 			}
-			if (items[previousIndex] > temp) {
+			if (items[previousIndex] > temp)
+			{
 				// shift item in first element up into next element position 
 				items[previousIndex + 1] = items[previousIndex];
 				// place current item at index 0 (first element) 
 				items[previousIndex] = temp;
-			} else {
+			}
+			else
+			{
 				// place current item at index ahead of previous item 
 				items[previousIndex + 1] = temp;
 			}
@@ -113,24 +126,30 @@ package Skillbuilders.ArrayListSort;
 	 * post: items[start..end] is sorted.
 	 */
 	/*
-	private static void merge(int[] items, int start, int mid, int end) {
+	private static void merge(int[] items, int start, int mid, int end)
+	{
 		int[] temp = new int[items.length];
 		int pos1 = start;
 		int pos2 = mid + 1;
 		int spot = start;
 
-		while (!(pos1 > mid && pos2 > end)) {
-			if ((pos1 > mid) || ((pos2 <= end) && (items[pos2] < items[pos1]))) {
+		while (!(pos1 > mid && pos2 > end))
+		{
+			if ((pos1 > mid) || ((pos2 <= end) && (items[pos2] < items[pos1])))
+			{
 				temp[spot] = items[pos2];
 				pos2 += 1;
-			} else {
+			}
+			else
+			{
 				temp[spot] = items[pos1];
 				pos1  += 1;
 			}
 			spot += 1;
 		}
 		// copy values from temp back to items 
-		for (int i =  start; i <= end; i++) {
+		for (int i =  start; i <= end; i++)
+		{
 			items[i] = temp[i];
 		}
 
@@ -143,8 +162,10 @@ package Skillbuilders.ArrayListSort;
 	 * post: items[start..end] is sorted low to high
 	 */
 	/*
-	public static void mergesort(int[] items, int start, int end) {
-		if (start < end) {
+	public static void mergesort(int[] items, int start, int end)
+	{
+		if (start < end)
+		{
 			int mid = (start + end) / 2;
 			mergesort(items, start, mid);
 			mergesort(items, mid + 1, end);

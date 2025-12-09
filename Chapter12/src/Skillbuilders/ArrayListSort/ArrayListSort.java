@@ -6,8 +6,9 @@ import java.util.ArrayList;
 public class ArrayListSort 
 {
 
-	public static void displayArray(ArrayList<Double> array) {
-		for (Double num : array) 
+	public static void displayArray(ArrayList<Double> array)
+	{
+		for (Double num: array)
 		{
 			System.out.println(num);
 		}
@@ -20,10 +21,12 @@ public class ArrayListSort
 
 		ArrayList<Double> doubleArray = new ArrayList<Double>();
 
-		/* populate array */
-		for (int i = 0; i < NUMOBJECTS; i++) {
-			doubleArray.add(new Double(Math.random()));
+		// populate array with random numbers
+		for (int i = 0; i < NUMOBJECTS; i++)
+		{
+			doubleArray.add(Math.random());
 		}
+		
 		System.out.println("Unsorted:");
 		displayArray(doubleArray);
 
@@ -34,7 +37,8 @@ public class ArrayListSort
 	}
 
 
-	public static void main(String[] args) {
+	public static void main(String[] args)
+	{
 		sortArrayListArray();
 	}
 }

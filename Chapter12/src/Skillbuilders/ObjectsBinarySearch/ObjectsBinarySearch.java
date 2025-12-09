@@ -1,8 +1,8 @@
-package Skillbuilders.ObjectsMergeSort;
+package Skillbuilders.ObjectsBinarySearch;
 
 import java.util.Scanner;
 
-public class ObjectsMergesort
+public class ObjectsBinarySearch
 {
 
 	public static void displayArray(String[] array)
@@ -14,12 +14,13 @@ public class ObjectsMergesort
 		System.out.println("\n");
 	}
 
-	public static void sortObjectArray()
+	public static void searchObjectArray()
 	{
 		Scanner input = new Scanner(System.in);
 		int numObjects;
 		String[] test;
 		String item;
+		int location;
 
 		System.out.print("Enter number of objects: ");
 		numObjects = input.nextInt();
@@ -39,10 +40,21 @@ public class ObjectsMergesort
 
 		System.out.println("Sorted:");
 		displayArray(test);
+
+		/* search for number in sorted array */
+		System.out.print("Enter a string to search for: ");
+		item = input.next();
+		while (!item.equalsIgnoreCase("end"))
+		{
+			location = Searches.binarySearch(test, 0, test.length - 1, item);
+			System.out.println("String at position: " + location);
+			System.out.print("Enter a string to search for: ");
+			item = input.next();
+		}
 	}
 
 	public static void main(String[] args)
 	{
-		sortObjectArray();
+		searchObjectArray();
 	}
 }

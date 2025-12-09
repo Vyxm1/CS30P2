@@ -1,3 +1,18 @@
+/*
+Program: TernarySearch.java          Last Date of this Revision: Dec. 9, 2025
+
+Purpose: Modify the Searches class to include a ternarySearch() method. A ternary search, similar to a binary
+search, divides an array into three pieces rather than two. A ternary search finds the points that divide
+the array into three roughly equal pieces, and then uses these points to determine where the goal
+should be searched for.
+
+
+Author: Vyom Patel 
+School: CHHS
+Course: Computer Programming 30
+
+ */
+
 package Mastery;
 
 public class TernarySearch
@@ -25,12 +40,12 @@ public class TernarySearch
 			else if (goal < items[mid])
 			{
 				System.out.println("Examining " + mid);
-				return binarySearch(items, start, mid - 1, goal);
+				return(binarySearch(items, start, mid - 1, goal));
 			}
 			else
 			{
 				System.out.println("Examining " + mid);
-				return binarySearch(items, mid + 1, end, goal);
+				return(binarySearch(items, mid + 1, end, goal));
 			}
 		}
 	}
@@ -43,5 +58,10 @@ public class TernarySearch
 		{
 			return(-1);
 		}
+		else
+		{
+			
+		}
+		
 	}
 }

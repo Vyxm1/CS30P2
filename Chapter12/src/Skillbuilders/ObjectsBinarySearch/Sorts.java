@@ -1,8 +1,7 @@
-package Skillbuilders.ObjectsMergeSort;
+package Skillbuilders.ObjectsBinarySearch;
 
 public class Sorts
 {
-
 	/**
 	 * Merges two sorted portion of items array pre: items[start..mid] is sorted.
 	 * items[mid+1..end] sorted. start <= mid <= end post: items[start..end] is
