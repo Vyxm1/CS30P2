@@ -1,4 +1,4 @@
-package Skillbuilders;
+package Queue;
 
 public class Queue
 {

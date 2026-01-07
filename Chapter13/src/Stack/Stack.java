@@ -1,11 +1,11 @@
-package Skillbuilders;
-public class Stack2
+package Stack;
+public class Stack
 
 {
 	private Object[] data;
 	private int top;
 
-	public Stack2(int maxItems)
+	public Stack(int maxItems)
 	{
 		data = new Object[maxItems];
 		top = -1;
